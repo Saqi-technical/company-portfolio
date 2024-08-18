@@ -267,9 +267,9 @@ h6 { font-size: 16px; }
 	align-items: center;
 	justify-content: space-between;
 }
-.grax_tm_topbar .logo .dark{display: none;}
-.grax_tm_topbar.animate .logo .dark{display: block;}
-.grax_tm_topbar.animate .logo .light{display: none;}
+.grax_tm_topbar .logo .dark{display: none; border-radius: 30px;}
+.grax_tm_topbar.animate .logo .dark{display: block; border-radius: 30px;}
+.grax_tm_topbar.animate .logo .light{display: none; border-radius: 30px;}
 .grax_tm_topbar .logo img{max-width: 100px;}
 .grax_tm_topbar .logo a{display: inline-block;}
 .grax_tm_topbar .menu ul{
