@@ -594,8 +594,26 @@
 							</li> -->
 							<li>
 								<div class="list_inner">
-									<img class="svg" src="img/svg/social/twitter.svg" alt="" />
+									<img class="svg" src="img/svg/social/twitter-dark.png" alt="" />
 									<p><span class="first">Twitter:</span><span class="second"><a href="#">@saqitechnical2526</a></span></p>
+								</div>
+							</li>
+							<li>
+								<div class="list_inner">
+									<img class="svg" src="img/svg/social/dailymotion-dark.png" alt="" />
+									<p><span class="first">dailymotion:</span><span class="second"><a href="#">@saqitechnical_2526</a></span></p>
+								</div>
+							</li>
+							<li>
+								<div class="list_inner">
+									<img class="svg" src="img/svg/social/youtube-dark.png" alt="" />
+									<p><span class="first">Youtube:</span><span class="second"><a href="#">@saqitechnical2526</a></span></p>
+								</div>
+							</li>
+							<li>
+								<div class="list_inner">
+									<img class="svg" src="img/svg/social/threads-dark.png" alt="" />
+									<p><span class="first">Threads:</span><span class="second"><a href="#">@saqitechnical</a></span></p>
 								</div>
 							</li>
 							<li>
@@ -609,29 +627,26 @@
 				</div>
 				<div class="right wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">
 					<div class="fields">
-						<form action="/" method="post" class="contact_form" id="contact_form">
+						<form id="contact_form" method="post">
 							<div class="returnmessage" data-success="Your message has been received, We will contact you soon."></div>
 							<div class="empty_notice"><span>Please Fill Required Fields</span></div>
 							<div class="first">
-								<ul>
-									<li>
-										<input id="name" type="text" placeholder="Name">
-									</li>
-									<li>
-										<input id="email" type="text" placeholder="Email">
-									</li>
-								</ul>
+							   <ul>
+								  <li>
+									 <input id="name" type="text" name="from_name" placeholder="Name">
+								  </li>
+								  <li>
+									 <input id="email" type="email" name="from_email" placeholder="Email">
+								  </li>
+							   </ul>
 							</div>
 							<div class="last">
-								<textarea id="message" placeholder="Message"></textarea>
+							   <textarea id="message" name="message" placeholder="Message"></textarea>
 							</div>
 							<div class="grax_tm_button">
-								<a id="send_message" href="#">Send Message</a>
+							   <a type="button" id="send_message" style="cursor: pointer;">Send Message</a>
 							</div>
-
-							<!-- If you want to change mail address to yours, please open modal.php and go to line 4 -->
-
-						</form>
+						 </form>
 					</div>
 				</div>
 			</div>
@@ -655,10 +670,15 @@
 					</div>
 					<div class="social wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">
 						<ul>
-							<li><a href="#"><img class="svg" src="img/svg/social/facebook.svg" alt="" /></a></li>
-							<li><a href="#"><img class="svg" src="img/svg/social/twitter.svg" alt="" /></a></li>
-							<li><a href="#"><img class="svg" src="img/svg/social/dribbble.svg" alt="" /></a></li>
-							<li><a href="#"><img class="svg" src="img/svg/social/tik-tok.svg" alt="" /></a></li>
+							<li><a href="https://www.facebook.com/saqitechnical2526/?locale=en_GB" target="_blank"><img class="svg" src="img/svg/social/facebook.svg" alt="" /></a></li>
+							<li><a href="https://x.com/SaqiTechni2526" target="_blank"><img class="svg" src="img/svg/social/twitter.svg" alt="" /></a></li>
+							<li><a href="https://www.instagram.com/saqitechnical/"><img class="svg" src="img/svg/social/instagram.svg" alt="" /></a></li>
+							<li><a href="https://www.tiktok.com/@saqitechnical_2526?lang=en"><img class="svg" src="img/svg/social/tik-tok.svg" alt="" /></a></li>
+							<li  ><a href="https://www.youtube.com/@saqitechnical2526"><img class="svg" src="img/svg/social/youtube.png" alt=""  /></a></li>
+							<li  ><a href="https://www.threads.net/@saqitechnical"><img class="svg" src="img/svg/social/threads.png" alt=""  /></a></li>
+							<li  ><a href="https://x.com/SaqiTechni2526"><img class="svg" src="img/svg/social/twitter.png" alt=""  /></a></li>
+							<li  ><a href="https://www.dailymotion.com/saqitechnical_2526"><img class="svg" src="img/svg/social/dailymotion.png" alt=""  /></a></li>
+							
 							<!-- You can download another svg icons from here for free https://www.flaticon.com -->
 						</ul>
 					</div>
@@ -691,6 +711,35 @@
 <!--[if lt IE 10]> <script type="text/javascript" src="js/ie8.js"></script> <![endif]-->	
 <script src="js/plugins.js"></script>
 <script src="js/init.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("EXl_lvQGly8SnX7I7"); // Replace with your EmailJS user ID
+   })();
+</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $('#send_message').on('click', function(event) {
+         event.preventDefault();
+
+         var templateParams = {
+            from_name: $('#name').val(),
+            from_email: $('#email').val(),
+            message: $('#message').val()
+         };
+
+         emailjs.send('service_6ed35ff', 'template_h4aysav', templateParams)
+            .then(function(response) {
+               console.log('SUCCESS!', response.status, response.text);
+               
+               $('#contact_form')[0].reset(); // Clear the form
+            }, function(error) {
+               console.log('FAILED...', error);
+               
+            });
+      });
+   });
+</script>
 <!-- /SCRIPTS -->
 
 </body>
